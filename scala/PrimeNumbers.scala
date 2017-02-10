@@ -1,4 +1,4 @@
-// prime.scala
+// PrimeNumbers.scala
 import math.sqrt
 
 object PrimeNumbers
