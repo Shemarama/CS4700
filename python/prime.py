@@ -16,13 +16,25 @@ def is_prime(n):
             return False
     return True
 
+def firstPrimeNumbers(n):
+    '''firstPrimeNumbers(n) ---> Prints the first n prime numbers.'''
+    if n < 1:
+        return
+    count = 1
+    i = 2
+    print '%d: %d' % (count, i)
+    i += 1
+    while count < n:
+        if is_prime(i):
+            count += 1
+            print '%d: %d' % (count, i)
+        i += 2
+
+def timeIt(f,n):
+    s = time.time()
+    f(n)
+    print 'Time: %f seconds' % (time.time()-s)
 
 
-
-n = 10000
-s = time.time()
-for i in xrange(0,n+1):
-    if is_prime(i):
-        print '%d is prime' % (i)
-
-print 'Time: %f seconds' % (time.time()-s)
+n = 1000
+timeIt(firstPrimeNumbers,n)
