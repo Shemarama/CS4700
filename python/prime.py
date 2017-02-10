@@ -20,6 +20,7 @@ def firstPrimeNumbers(n):
     '''firstPrimeNumbers(n) ---> Prints the first n prime numbers.'''
     if n < 1:
         return
+    # since 2 is the first prime number
     count = 1
     i = 2
     print '%d: %d' % (count, i)

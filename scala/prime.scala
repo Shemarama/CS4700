@@ -16,17 +16,36 @@ object PrimeNumbers
     return true
   }
 
-  def main(args: Array[String])
-  {
-    val n = 10000
-    val s = System.nanoTime
-
-    for( i <- 0 to n )
+  def firstPrimeNumbers(n: Int): Unit = {
+    if (n < 1) { return }
+    
+    // since 2 is the first prime number
+    var count: Int = 1
+    var i: Int = 2
+    println(s"$count: $i") // string interpolation
+    
+    i += 1
+    
+    while (count < n)
     {
       if (is_prime(i))
-        println(i.toString + " is prime")
+      {
+        count += 1
+        println(s"$count: $i")
+      }
+      i += 2
     }
+  }
 
+  def timeIt(f: Int => Unit, n: Int) = {
+    val s = System.nanoTime
+    f(n)
     println("Time: " + (System.nanoTime-s)/1e9 + " seconds")
+  }
+
+  def main(args: Array[String])
+  {
+    val n = 1000
+    timeIt(firstPrimeNumbers,n)
   }
 }
