@@ -44,6 +44,6 @@ public class PrimeNumbers
     int n = 1000;
     long s = System.nanoTime();
     firstPrimeNumbers(n);
-    System.out.println("Time: " + (System.nanoTime()-s)/1e9 + " seconds");
+    System.out.println("Time: " + (System.nanoTime()-s)/1e6 + " ms");
   }
 }

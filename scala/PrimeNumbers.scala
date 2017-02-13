@@ -40,7 +40,7 @@ object PrimeNumbers
   def timeIt(f: Int => Unit, n: Int) = {
     val s = System.nanoTime
     f(n)
-    println("Time: " + (System.nanoTime-s)/1e9 + " seconds")
+    println("Time: " + (System.nanoTime-s)/1e6 + " seconds")
   }
 
   def main(args: Array[String])
