@@ -35,6 +35,7 @@ def timeIt(f,n):
     s = time.time()
     f(n)
     e = (time.time()-s)*1000
+    open('output.csv', 'a').write(str(e)+',')
     print 'Time: %f ms' % (e)
 
 
