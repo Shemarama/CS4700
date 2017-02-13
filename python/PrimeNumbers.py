@@ -34,7 +34,8 @@ def firstPrimeNumbers(n):
 def timeIt(f,n):
     s = time.time()
     f(n)
-    print 'Time: %f ms' % ((time.time()-s)*1000)
+    e = (time.time()-s)*1000
+    print 'Time: %f ms' % (e)
 
 
 n = 1000
