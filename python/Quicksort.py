@@ -1,45 +1,24 @@
 # taken from https://interactivepython.org/runestone/static/pythonds/SortSearch/TheQuickSort.html
-def quickSort(a):
-   quickSortHelper(a,0,len(a)-1)
-
-def quickSortHelper(a,first,last):
-   if first<last:
-
-       pivot = partition(a,first,last)
-
-       quickSortHelper(a,first,pivot-1)
-       quickSortHelper(a,pivot+1,last)
-
-
-def partition(a,first,last):
-   pivotvalue = a[first]
-
-   leftmark = first+1
-   rightmark = last
-
-   done = False
-   while not done:
-
-       while leftmark <= rightmark and a[leftmark] <= pivotvalue:
-           leftmark = leftmark + 1
-
-       while a[rightmark] >= pivotvalue and rightmark >= leftmark:
-           rightmark = rightmark -1
-
-       if rightmark < leftmark:
-           done = True
-       else:
-           temp = a[leftmark]
-           a[leftmark] = a[rightmark]
-           a[rightmark] = temp
-
-   temp = a[first]
-   a[first] = a[rightmark]
-   a[rightmark] = temp
+def quicksort(array):
+    _quicksort(array, 0, len(array)-1)
+ 
+def _quicksort(array, start, stop):
+    if stop - start > 0:
+        pivot, left, right = array[start], start, stop
+        while left <= right:
+            while array[left] < pivot:
+                left += 1
+            while array[right] > pivot:
+                right -= 1
+            if left <= right:
+                array[left], array[right] = array[right], array[left]
+                left += 1
+                right -= 1
+        _quicksort(array, start, right)
+        _quicksort(array, left, stop)
 
 
-   return rightmark
-
-alist = [54,26,93,17,77,31,44,55,20]
-quickSort(alist)
-print(alist)
+with open('../list.txt','r') as f:
+    a = [ int(line.strip()) for line in f]
+quicksort(a)
+print(a)
