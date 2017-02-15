@@ -1,9 +1,22 @@
+// taken from https://gist.github.com/alexwestphal/1267131
 object Quicksort
 {
+  def quicksort(xs: Array[Int]): Array[Int] = {
+    if (xs.length <= 1) xs
+    else {
+      val pivot = xs(xs.length / 2)
+      Array.concat(
+        quicksort(xs filter (pivot >)),
+        xs filter (pivot ==),
+        quicksort(xs filter (pivot <)))
+    }
+  }
 
   def main(args: Array[String])
   {
-    val fileLines = io.Source.fromFile("../list.txt").getLines.toList
-    fileLines.foreach(println)
+    var fileLines = io.Source.fromFile("../list.txt").getLines.toArray.map(_.toInt)
+    val s = System.nanoTime
+    fileLines = quicksort(fileLines)
+    println("Time: " + (System.nanoTime-s)/1e6 + " ms")
   }
 }
