@@ -27,9 +27,12 @@ def timeIt(f,n):
     s = time.time()
     f(n)
     e = (time.time()-s)*1000
-    print 'Time: %f ms' % (e)
+    #print 'Time: %f ms' % (e)
+    return e
 
 
-with open('../list.txt','r') as f:
-    a = [ int(line.strip()) for line in f]
-timeIt(quicksort,a)
+with open('quickpy.cvs','w') as outf:
+    for i in xrange(100):
+        with open('../list.txt','r') as f:
+            a = [ int(line.strip()) for line in f]
+            outf.write(str(timeIt(quicksort,a)) + ",")

@@ -35,9 +35,12 @@ def timeIt(f,n):
     s = time.time()
     f(n)
     e = (time.time()-s)*1000
-    open('output.csv', 'a').write(str(e)+',')
-    print 'Time: %f ms' % (e)
+    #open('output.csv', 'a').write(str(e)+',')
+    #print 'Time: %f ms' % (e)
+    return e
 
 
 n = 1000
-timeIt(firstPrimeNumbers,n)
+with open('primepy.cvs', 'w') as f:
+    for i in xrange(100):
+        f.write(str(timeIt(firstPrimeNumbers,n)) + ",")
