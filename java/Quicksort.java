@@ -40,37 +40,51 @@ public class Quicksort
 
   public static void main(String[] args)
   {
-    String fileName = "../list.txt";
-    String line = null;
-    Vector<Integer> list = new Vector<>();
-
     try
     {
-      FileReader fileReader = new FileReader(fileName);
-
-      BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-      while((line = bufferedReader.readLine()) != null)
+      PrintWriter output = new PrintWriter(new File("quickjava.csv"));
+      FileReader fileReader;
+      BufferedReader bufferedReader;
+      for (int i=0; i<100; i++)
       {
-        list.add(Integer.parseInt(line));
+        try
+        {
+          String fileName = "../list.txt";
+          String line = null;
+          Vector<Integer> list = new Vector<>();
+          
+          fileReader = new FileReader(fileName);
+          bufferedReader = new BufferedReader(fileReader);
+
+          while((line = bufferedReader.readLine()) != null)
+          {
+            list.add(Integer.parseInt(line));
+          }
+
+          bufferedReader.close();
+
+          long s = System.nanoTime();
+          list = quicksort(list);
+          //System.out.println("Time: " + (System.nanoTime()-s)/1e6 + " ms");
+          output.write(((System.nanoTime()-s)/1e6) + ",");
+
+          //for(Integer x : list)
+          //  System.out.println(x);
+        }
+        catch(FileNotFoundException ex)
+        {
+          System.out.println("File not found");
+        }
+        catch(IOException ex)
+        {
+          System.out.println("Error reading file");
+        }
       }
-
-      bufferedReader.close();
-
-      long s = System.nanoTime();
-      list = quicksort(list);
-      System.out.println("Time: " + (System.nanoTime()-s/1e6) + " ms");
-
-      //for(Integer x : list)
-      //  System.out.println(x);
+      output.close();
     }
-    catch(FileNotFoundException ex)
+    catch (IOException e)
     {
-      System.out.println("File not found");
-    }
-    catch(IOException ex)
-    {
-      System.out.println("Error reading file");
+      System.out.println("Could not open file");
     }
   }
 }

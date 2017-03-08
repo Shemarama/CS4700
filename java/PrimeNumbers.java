@@ -1,4 +1,6 @@
 // PrimeNumbers.java
+
+import java.io.*;
 import java.lang.Math.*;
 
 public class PrimeNumbers
@@ -42,8 +44,21 @@ public class PrimeNumbers
   public static void main(String[] args)
   {
     int n = 1000;
-    long s = System.nanoTime();
-    firstPrimeNumbers(n);
-    System.out.println("Time: " + (System.nanoTime()-s)/1e6 + " ms");
+    try
+    {
+      PrintWriter output = new PrintWriter(new File("primejava.csv"));
+      for (int i = 0; i < 100; i++)
+      {
+        long s = System.nanoTime();
+        firstPrimeNumbers(n);
+        //System.out.println("Time: " + (System.nanoTime()-s)/1e6 + " ms");
+        output.write(((System.nanoTime()-s)/1e6) + ",");
+      }
+      output.close();
+    }
+    catch (IOException e)
+    {
+      System.out.println("Could not open file");
+    }
   }
 }
