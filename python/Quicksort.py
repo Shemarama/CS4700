@@ -1,6 +1,6 @@
 #!/usr/bin/python2
 
-# taken from https://rosettacode.org/wiki/Sorting_algorithms/Quicksort#Python
+# adapted from https://rosettacode.org/wiki/Sorting_algorithms/Quicksort#Python
 import time
 
 def quicksort(array):

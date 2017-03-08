@@ -1,4 +1,4 @@
-// taken from https://gist.github.com/alexwestphal/1267131
+// adapted from https://gist.github.com/alexwestphal/1267131
 object Quicksort
 {
   def quicksort(xs: Array[Int]): Array[Int] = {
