@@ -59,7 +59,7 @@ public class Quicksort
 
       long s = System.nanoTime();
       list = quicksort(list);
-      System.out.println("Time: " + (System.nanoTime()-s/1e6 + " ms"));
+      System.out.println("Time: " + (System.nanoTime()-s/1e6) + " ms");
 
       //for(Integer x : list)
       //  System.out.println(x);
