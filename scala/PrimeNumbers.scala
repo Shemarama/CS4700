@@ -1,4 +1,6 @@
 // PrimeNumbers.scala
+
+import java.io._
 import math.sqrt
 
 object PrimeNumbers
@@ -37,15 +39,21 @@ object PrimeNumbers
     }
   }
 
-  def timeIt(f: Int => Unit, n: Int) = {
+  def timeIt(f: Int => Unit, n: Int): Double = {
     val s = System.nanoTime
     f(n)
-    println("Time: " + (System.nanoTime-s)/1e6 + " ms")
+    //println("Time: " + (System.nanoTime-s)/1e6 + " ms")
+    return ((System.nanoTime-s)/1e6)
   }
 
   def main(args: Array[String])
   {
     val n = 1000
-    timeIt(firstPrimeNumbers,n)
+    val output = new PrintWriter(new File("primescala.csv"))
+    for (i <- 1 to 100)
+    {
+      output.write(timeIt(firstPrimeNumbers,n) + ",")
+    }
+    output.close()
   }
 }
