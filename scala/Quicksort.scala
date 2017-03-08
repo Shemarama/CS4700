@@ -6,9 +6,9 @@ object Quicksort
     else {
       val pivot = xs(xs.length / 2)
       Array.concat(
-        quicksort(xs filter (pivot >)),
-        xs filter (pivot ==),
-        quicksort(xs filter (pivot <)))
+        quicksort(xs filter (pivot > _)),
+        xs filter (pivot == _),
+        quicksort(xs filter (pivot < _)))
     }
   }
 
